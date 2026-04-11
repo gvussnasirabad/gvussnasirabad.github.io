@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f97316; /* Vibrant Saffron */
+            --primary-dark: #c2410c; 
+            --secondary: #800000; /* Deep Maroon/Crimson for tradition */
+            --accent: #06b6d4; /* Teal for modern contrast and action */
+            --bg-color: #fffbeb; /* Cream/Ivory for a calm, manuscript feel */
+            --white: #ffffff;
+            --text-dark: #1f2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Mukta', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-dark); position: relative;}
+        
+        /* Mandala Pattern Background */
+        body::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><g fill-rule="evenodd"><g fill="%23f97316" fill-opacity="0.05"><path d="M50 50c11.046 0 20-8.954 20-20S61.046 10 50 10 30 18.954 30 30s8.954 20 20 20zm0-10c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zM50 50c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20S50 61.046 50 50zm10 0c0 5.523 4.477 10 10 10s10-4.477 10-10-4.477-10-10-10-10 4.477-10 10zM50 50c-11.046 0-20 8.954-20 20S18.954 90 30 90s20-8.954 20-20-8.954-20-20-20zm0 10c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zM50 50c0 11.046-8.954 20-20 20S0 61.046 0 50s8.954-20 20-20 20 8.954 20 20z" /></g></g></svg>');
+            background-size: 150px 150px; z-index: -1;
+        }
+
+        /* Navbar: Deep Maroon with a slight gradient */
+        nav { background: linear-gradient(135deg, #600000, var(--secondary)); padding: 15px 30px; color: var(--white); display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.15); flex-wrap: wrap; border-bottom: 3px solid #b30000; }
+        nav h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.5px; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links button { background: none; border: none; color: var(--white); font-size: 1rem; cursor: pointer; font-weight: 500; padding: 8px 15px; border-radius: 8px; transition: 0.3s ease; text-transform: uppercase;}
+        .nav-links button:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+
+        /* Header Banner with Modern Traditional Image */
+        header { text-align: center; padding: 0; background: none; }
+        #bannerImage { width: 100%; height: auto; max-height: 250px; object-fit: cover; display: block;}
+
+        /* Container: Modern Card Styling */
+        .container { max-width: 950px; margin: 30px auto; padding: 30px; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); min-height: 50vh; border: 1px solid #f9e1ba; position: relative;}
+        .section { display: none; animation: fadeIn 0.6s ease-in-out; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Modern Saffron Search Box */
+        .search-box { text-align: center; margin: 40px 0; background: #fffcf0; padding: 30px; border-radius: 15px; border: 1px dashed var(--primary); }
+        .search-box label { display: block; font-size: 1.3rem; font-weight: 600; color: var(--secondary); margin-bottom: 15px;}
+        .search-box input { padding: 15px 25px; font-size: 1.15rem; border: 2px solid #fdba74; border-radius: 50px; width: 70%; max-width: 350px; outline: none; transition: 0.3s; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);}
+        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 10px rgba(249, 115, 22, 0.3); }
+        .search-box button { padding: 15px 30px; font-size: 1.1rem; border: none; background: linear-gradient(135deg, var(--primary), #e16010); color: var(--white); border-radius: 50px; cursor: pointer; margin-left: 15px; font-weight: 600; transition: 0.3s; box-shadow: 0 5px 10px rgba(249, 115, 22, 0.3); text-transform: uppercase; letter-spacing: 0.5px;}
+        .search-box button:hover { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); transform: translateY(-3px); box-shadow: 0 7px 15px rgba(249, 115, 22, 0.4); }
+
+        /* Loader & Error */
+        .loader { border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; margin: 30px auto; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .error { color: #b91c1c; text-align: center; display: none; margin-top: 20px; font-weight: 600; background: #fee2e2; padding: 15px; border-radius: 8px; border: 1px solid #fecaca;}
+
+        /* Marksheet: A prestigious 'Grantha' like feel */
+        .marksheet { border: 3px solid var(--primary); padding: 30px; border-radius: 15px; margin-top: 30px; display: none; background: #fffdf9; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .marksheet h3 { text-align: center; color: var(--secondary); border-bottom: 3px double var(--primary); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.6rem; font-weight: 800; letter-spacing: 0.5px;}
+        
+        .student-info { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; font-size: 1.15rem; background: #fffcf0; padding: 20px; border-radius: 10px; border: 1px solid #fae7c9;}
+        .student-info div { line-height: 1.8; color: var(--text-dark); }
+        .student-info strong { color: #803000; }
+        
+        .marks-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .marks-table th, .marks-table td { border: 1px solid #fae7c9; padding: 12px; text-align: center; font-size: 1.15rem; }
+        .marks-table th { background: var(--secondary); color: white; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;}
+        .marks-table td { font-weight: 500; color: #404040;}
+        .marks-table tr:nth-child(even) { background-color: #fdf6e6; }
+        
+        /* Summary Box with Teal and Saffron accents */
+        .result-summary-box { background: linear-gradient(135deg, #ffedd5, #fffbeb); border: 2px solid #fdba74; padding: 20px; border-radius: 12px; margin-top: 25px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center;}
+        .summary-item { font-size: 1.2rem; font-weight: bold; color: var(--secondary); margin: 10px 15px;}
+        .summary-item span { color: var(--primary-dark); font-size: 1.4rem; display: block; margin-top: 8px; font-weight: 800;}
+        
+        /* Teal Action Button for Modern Look */
+        .print-btn { display: block; margin: 25px auto 0; padding: 12px 30px; background: linear-gradient(135deg, var(--accent), #049fb9); color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; box-shadow: 0 5px 10px rgba(6, 182, 212, 0.3); }
+        .print-btn:hover { background: linear-gradient(135deg, #049fb9, var(--accent)); transform: translateY(-2px); box-shadow: 0 7px 15px rgba(6, 182, 212, 0.4); }
+
+        /* Footer: Deep Maroon */
+        footer { text-align: center; padding: 25px; background: #500000; color: #fff8eb; margin-top: 50px; font-size: 1rem; border-top: 4px solid var(--primary-dark); }
+        footer p { font-weight: 300; }
+        
+        /* Print Styling */
+        @media print {
+            body * { visibility: hidden; }
+            .container, .container * { visibility: hidden; }
+            .marksheet, .marksheet * { visibility: visible; }
+            .marksheet { position: absolute; left: 0; top: 0; width: 100%; border: none; background: white; margin: 0; padding: 0;}
+            .print-btn { display: none; }
+            .result-summary-box { background: transparent; border: 1px solid #000; }
+            body::before { display: none; }
+        }
+        
+        /* Mobile Responsive adjustments */
+        @media (max-width: 768px) {
+            nav { padding: 15px; }
+            nav h2 { font-size: 1.1rem; text-align: center; width: 100%; margin-bottom: 10px; }
+            .nav-links { width: 100%; justify-content: center; }
+            .search-box input { width: 100%; margin-bottom: 15px; }
+            .search-box button { width: 100%; margin-left: 0; }
+            .student-info { grid-template-columns: 1fr; }
+            .result-summary-box { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>गवर्नमेंट वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद</h2>
+        <div class="nav-links">
+            <button onclick="showSection('home')">होम</button>
+            <button onclick="showSection('result')">परिणाम</button>
+            <button onclick="showSection('about')">विद्यालय</button>
+        </div>
+    </nav>
+
+    <header>
+        <img id="bannerImage" src="https://image_gen.m4b.dev/api/v1/images/b/309194208f23f2b65100f95932f9c464edb0713be2a9693eb64fca64f7df5bb9.png" alt="GVUSS Nasirabad School Banner" />
+    </header>
+
+    <div class="container">
+        <div id="home" class="section active">
+            <h2 style="text-align:center; color: var(--secondary); margin-bottom: 20px; font-weight: 800;">ज्ञान, संस्कृति और परीक्षा परिणाम पोर्टल</h2>
+            <p style="text-align:center; font-size: 1.2rem; line-height: 1.7; color: #505050; max-width: 700px; margin: 0 auto;">राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद के डिजिटल पोर्टल में आपका स्वागत है। विद्यार्थी यहाँ से अपनी ऑनलाइन मार्कशीट आसानी से देख और डाउनलोड कर सकते हैं।</p>
+            <div style="text-align:center; margin-top:40px;">
+                <button onclick="showSection('result')" style="padding: 15px 35px; background: linear-gradient(135deg, var(--secondary), #600000); color: white; border: none; border-radius: 50px; font-size: 1.1rem; cursor: pointer; font-weight: 600; box-shadow: 0 5px 10px rgba(128, 0, 0, 0.3); text-transform: uppercase;">अपना परिणाम देखें ➔</button>
+            </div>
+        </div>
+
+        <div id="result" class="section">
+            <h2 style="text-align:center; color: var(--secondary);">ऑनलाइन मार्कशीट खोजें</h2>
+            <div class="search-box">
+                <label for="rollInput">अपना रोल नंबर दर्ज करें:</label>
+                <input type="text" id="rollInput" placeholder="उदा. 101">
+                <button onclick="fetchResult()">मार्कशीट दिखाएं</button>
+            </div>
+            
+            <div class="loader" id="loader"></div>
+            <div class="error" id="errorMsg">रोल नंबर अमान्य या डेटा उपलब्ध नहीं है। कृपया सही रोल नंबर दर्ज करें।</div>
+
+            <div class="marksheet" id="marksheet">
+                <h3>अंकतालिका (Marksheet) - वार्षिक परीक्षा 2025-26</h3>
+                <div class="student-info">
+                    <div><strong>छात्र का नाम:</strong> <span id="sName"></span></div>
+                    <div><strong>रोल नंबर:</strong> <span id="sRoll"></span></div>
+                    <div><strong>पिता का नाम:</strong> <span id="sFName"></span></div>
+                    <div><strong>कक्षा:</strong> <span id="sClass"></span></div>
+                </div>
+                <table class="marks-table">
+                    <thead>
+                        <tr>
+                            <th>विषय</th>
+                            <th>अधिकतम अंक</th>
+                            <th>प्राप्तांक</th>
+                        </tr>
+                    </thead>
+                    <tbody id="marksBody">
+                        </tbody>
+                </table>
+                
+                <div class="result-summary-box">
+                    <div class="summary-item">कुल प्राप्तांक <span id="sTotal">0/600</span></div>
+                    <div class="summary-item">प्रतिशत <span id="sPercent">0%</span></div>
+                    <div class="summary-item">परिणाम / श्रेणी <span id="sDiv">Pass</span></div>
+                    <div class="summary-item">कक्षा में स्थान (Rank) <span id="sRank">-</span></div>
+                </div>
+
+                <button class="print-btn" onclick="window.print()">🖨️ प्रिंट / डाउनलोड करें</button>
+            </div>
+        </div>
+
+        <div id="about" class="section">
+            <h2 style="text-align:center; color: var(--secondary); margin-bottom: 20px;">विद्यालय के बारे में</h2>
+            <p style="line-height: 1.9; text-align: justify; font-size: 1.15rem; color: #404040;">राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद एक प्रतिष्ठित सरकारी शिक्षण संस्थान है जो आधुनिक शिक्षा के साथ-साथ संस्कृत भाषा और भारतीय संस्कृति के संरक्षण के लिए प्रतिबद्ध है। हमारा उद्देश्य ग्रामीण छात्रों को गुणवत्तापूर्ण शिक्षा प्रदान कर उन्हें स्वावलंबी बनाना है।</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद (विद्यालय कोड: 224286).</p>
+        <p>समस्त अधिकार सुरक्षित।</p>
+    </footer>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+
+        // ==========================================
+        // 🛑 STEP 1: भविष्य में यहाँ Google Web App का URL डालना है
+        // ==========================================
+        const GOOGLE_API_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE"; 
+
+        // डेमो डेटा (जब तक Google API लिंक नहीं होता)
+        const demoData = {
+            "101": { roll: "101", name: "राहुल कुमार", fname: "रामलाल", class: "वरिष्ठ उपाध्याय", marks: { "हिन्दी (Hindi)": 85, "अंग्रेजी (English)": 78, "संस्कृत (Sanskrit)": 92, "व्याकरण (Vyas)": 88, "साहित्य (Sahitya)": 80, "इतिहास (Itihas)": 86 }, total: 509, percent: "84.83", division: "प्रथम (I Division)", rank: "2" },
+            "102": { roll: "102", name: "पूजा शर्मा", fname: "दिनेश शर्मा", class: "वरिष्ठ उपाध्याय", marks: { "हिन्दी (Hindi)": 90, "अंग्रेजी (English)": 82, "संस्कृत (Sanskrit)": 95, "व्याकरण (Vyas)": 91, "साहित्य (Sahitya)": 89, "इतिहास (Itihas)": 94 }, total: 541, percent: "90.16", division: "प्रथम (I Division)", rank: "1" }
+        };
+
+        async function fetchResult() {
+            const roll = document.getElementById('rollInput').value.trim();
+            const loader = document.getElementById('loader');
+            const errorMsg = document.getElementById('errorMsg');
+            const marksheet = document.getElementById('marksheet');
+
+            if(!roll) { alert('कृपया रोल नंबर दर्ज करें'); return; }
+
+            marksheet.style.display = 'none';
+            errorMsg.style.display = 'none';
+            loader.style.display = 'block';
+
+            try {
+                let studentData = null;
+
+                // ==========================================
+                // 🛑 STEP 2: डेटा लाने का लॉजिक
+                // ==========================================
+                if (GOOGLE_API_URL === "YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE") {
+                    // अगर API नहीं डाली है, तो डेमो डेटा दिखाएगा
+                    await new Promise(r => setTimeout(r, 800)); // थोड़ा सा डिले
+                    studentData = demoData[roll];
+                } else {
+                    // जब API डाल देंगे, तो यह असली शीट से डेटा लाएगा
+                    const response = await fetch(`${GOOGLE_API_URL}?roll=${roll}`);
+                    const result = await response.json();
+                    if(result.success) studentData = result.data;
+                }
+
+                loader.style.display = 'none';
+
+                if (studentData) {
+                    displayMarksheet(studentData);
+                } else {
+                    errorMsg.style.display = 'block';
+                }
+            } catch (error) {
+                loader.style.display = 'none';
+                errorMsg.innerText = "डेटा लाने में समस्या हुई। कृपया इंटरनेट कनेक्शन जांचें।";
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        function displayMarksheet(data) {
+            document.getElementById('sName').innerText = data.name;
+            document.getElementById('sRoll').innerText = data.roll;
+            document.getElementById('sFName').innerText = data.fname;
+            document.getElementById('sClass').innerText = data.class;
+
+            let tbodyHtml = '';
+            for (const [subject, mark] of Object.entries(data.marks)) {
+                tbodyHtml += `<tr><td>${subject}</td><td>100</td><td>${mark}</td></tr>`;
+            }
+            document.getElementById('marksBody').innerHTML = tbodyHtml;
+
+            // एक्सेल शीट से सीधा आया हुआ फाइनल रिजल्ट
+            document.getElementById('sTotal').innerText = data.total + " / 600";
+            document.getElementById('sPercent').innerText = data.percent + "%";
+            document.getElementById('sDiv').innerText = data.division;
+            document.getElementById('sRank').innerText = data.rank;
+
+            document.getElementById('marksheet').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
