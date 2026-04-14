@@ -55,7 +55,7 @@
         .contact-info { font-size: 1.1rem; color: var(--text-dark);}
         .contact-info span { display: block; font-weight: 700; color: var(--secondary);}
 
-        /* Result Search styling - UPDATED WITH CLASS */
+        /* Result Search styling */
         .search-box { text-align: center; margin: 20px 0 40px; background: #fffcf0; padding: 30px; border-radius: 15px; border: 1px solid #fae7c9; box-shadow: 0 4px 10px rgba(0,0,0,0.03);}
         .input-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;}
         .input-group select, .input-group input { padding: 12px 20px; font-size: 1.1rem; border: 2px solid #fdba74; border-radius: 8px; outline: none; transition: 0.3s; flex: 1; min-width: 200px; max-width: 250px;}
@@ -357,14 +357,14 @@
 
         <div id="about" class="section">
             <h2 class="section-title">विद्यालय एक परिचय</h2>
-            <p style="line-height: 1.9; font-size: 1.15rem; color: #404040; text-align: justify;">राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद आधुनिक शिक्षा के साथ-साथ प्राचीन संस्कृत भाषा और भारतीय संस्कृति के संरक्षण के लिए प्रतिबद्ध है। हमारा उद्देश्य विद्यार्थियों को उच्च कोटि की शिक्षा और संस्कार प्रदान कर उन्हें समाज का एक जिम्मेदार और सफल नागरिक बनाना है।</p>
-            <p style="font-size: 1.1rem; color: var(--primary-dark); font-weight: 600; margin-top: 15px; text-align: center;">U-DISE / विद्यालय कोड: 224286</p>
+            <p style="line-height: 1.9; font-size: 1.15rem; color: #404040; text-align: justify;">राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद आधुनिक शिक्षा के साथ-साथ प्राचीन संस्कृत भाषा और भारतीय संस्कृति के संरक्षण के लिए प्रतिबद्ध है। हमारा उद्देश्य विद्यार्थियों को उच्च कोटि की शिक्षा और संस्कार प्रदान कर उन्हें समाज का एक जिम्मेदार और सफल नागरिक बनाना है。</p>
+            <p style="font-size: 1.1rem; color: var(--primary-dark); font-weight: 600; margin-top: 15px; text-align: center;">U-DISE:08210310005 / विद्यालय कोड: 214286</p>
         </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद.</p>
+        <p>&copy; 2026 राजकीय वरिष्ठ उपाध्याय संस्कृत विद्यालय, नसीराबाद (कोड: 214286).</p>
         <p style="font-size: 0.9rem; margin-top: 5px; opacity: 0.8;">सर्वाधिकार सुरक्षित।</p>
     </footer>
 
@@ -379,10 +379,9 @@
 
         const isResultActive = true; 
 
-        // Demo data updated to handle classes
         const demoData = {
             "2025-26": {
-                "11": { // Example for Class 11
+                "11": { 
                     "101": { roll: "101", name: "राहुल कुमार", fname: "रामलाल", class: "कक्षा 11 (वरिष्ठ उपाध्याय)", marks: { "हिन्दी": 85, "अंग्रेजी": 78, "संस्कृत": 92, "व्याकरण": 88, "साहित्य": 80, "इतिहास": 86 }, total: 509, percent: "84.83", division: "प्रथम", rank: "2" }
                 }
             },
@@ -399,12 +398,10 @@
             const marksheet = document.getElementById('marksheet');
             const lockedMsg = document.getElementById('lockedMessage');
 
-            // Hide old messages
             marksheet.style.display = 'none';
             errorMsg.style.display = 'none';
             lockedMsg.style.display = 'none';
 
-            // Validations
             if(!selectedClass) { alert('कृपया पहले अपनी कक्षा चुनें!'); return; }
             if(!roll) { alert('कृपया अपना रोल नंबर दर्ज करें!'); return; }
 
@@ -418,7 +415,6 @@
             try {
                 await new Promise(r => setTimeout(r, 800)); 
                 
-                // Fetch data logic based on Year -> Class -> Roll
                 const yearData = demoData[year];
                 const classData = yearData ? yearData[selectedClass] : null;
                 const studentData = classData ? classData[roll] : null;
